@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Title{% endblock %} - Sentinel Resource Tracker</title>
+    <!--[if IE]>
+        <script type="text/javascript" src="/static/lib/svgweb/svg.js" data-path="/static/lib/svgweb/"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/lib/svgweb/protovis-r3.3_svgweb.js"></script>
+    <script type="text/javascript" src="/static/lib/jquery-1.4.2.min.js"></script> 
+    <script type="text/javascript" src="/static/lib/jquery-ui/jquery-ui-1.8.custom.min.js"></script> 
+    <script type="text/javascript" src="/static/js/ui.js"></script> 
+    <script type="text/javascript" src="/static/js/svgexport.js"></script>
+    <script type="text/javascript+protovis">{% include 'static/js/common.js'%}</script>
+    {% block javascript %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/static/lib/jquery-ui/css/ui-lightness/jquery-ui-1.8.custom.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/static/lib/fluid960gs/css/reset.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="/static/lib/fluid960gs/css/text.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="/static/lib/fluid960gs/css/grid.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="/static/lib/fluid960gs/css/layout.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="/static/lib/fluid960gs/css/nav.css" media="screen" /> 
+    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="../../../css/ie6.css" media="screen" /><![endif]--> 
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="../../../css/ie.css" media="screen" /><![endif]--> 
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" media="screen" /> 
+  </head>
+<body>
+<div id="wrapper" class="clearfix container_12">
+    <div id="header" class="clearfix">
+        <div class="grid_7 alpha">
+            <h1><a href="/">Sentinel Resource Tracker</a></h2>
+        </div>
+        <div class="grid_5" id="search">
+            <form action="/search/" style="display:inline">
+                Search: <input name="q" size="20">
+            </form>
+        </div>
+    </div>
+    
+    <div id="sidebar">
+        {% block sidebar %}
+        
+        {% endblock %}
+    </div>
+    
+    <div id="content">
+        <div id="tabs">
+            <ul class="nav">
+                {% for tab in tabs %}
+                    <li class="{{tab.current|yesno:'current,'}}"><a href="{{tab.path}}">{{tab.text}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="content-body" class="clearfix">
+            {% block contenthead %}
+
+            {% endblock %}
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>
